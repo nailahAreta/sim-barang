@@ -1,135 +1,65 @@
-
 <?php
-
 session_start();
 
-// Jika sudah login, langsung ke dashboard
-if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
-    header("Location: index.php");
-    exit;
-}
+$pesan_error = "";
 
-// Data pengguna dalam array asosiatif
-$pengguna = [
-    "admin" => [
-        "password" => "password123",
-        "nama" => "Administrator",
-        "role" => "Admin"
-    ]
-];
+// Tangkap input jika tombol login diklik
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-$pesanError = "";
-
-// Proses login
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $username = trim($_POST["username"] ?? "");
-    $password = $_POST["password"] ?? "";
-
-    if (
-        isset($pengguna[$username]) &&
-        hash_equals($pengguna[$username]["password"], $password)
-    ) {
-
-        // Membuat session baru
-        session_regenerate_id(true);
-
-        $_SESSION["login"] = true;
-        $_SESSION["username"] = $username;
-        $_SESSION["nama"] = $pengguna[$username]["nama"];
-        $_SESSION["role"] = $pengguna[$username]["role"];
-
+    // Akun statis untuk pengujian
+    if ($username === "admin" && $password === "password123") {
+        $_SESSION['login'] = true;
+        $_SESSION['user'] = $username;
+        
+        // Arahkan ke halaman utama
         header("Location: index.php");
         exit;
-
     } else {
-
-        $pesanError = "Username atau password salah!";
-
+        $pesan_error = "Username atau password salah!";
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | SIM-Barang</title>
+    <title>Login - SIM-Barang</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="login-page">
+    <header>
+        <h1>SIM-Barang</h1>
+        <p>Sistem Pengelolaan Inventaris Barang Jurusan</p>
+    </header>
 
-    <div class="login-container">
+    <main>
+        <section style="max-width: 450px; margin: 40px auto;">
+            <h2>Halaman Login</h2>
 
-        <div class="login-header">
-            <div class="login-icon">📦</div>
-            <h1>SIM-Barang</h1>
-            <p>Sistem Informasi Manajemen Barang</p>
-        </div>
-
-        <div class="login-card">
-
-            <h2>Selamat Datang</h2>
-            <p class="login-subtitle">
-                Silakan login untuk mengakses sistem.
-            </p>
-
-            <?php if ($pesanError !== ""): ?>
-                <div class="pesan-error">
-                    <?= htmlspecialchars($pesanError) ?>
-                </div>
+            <?php if ($pesan_error != ""): ?>
+                <div class="pesan-error"><?= $pesan_error; ?></div>
             <?php endif; ?>
 
             <form action="login.php" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan username" required>
 
-                <div class="form-group">
-                    <label for="username">Username</label>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan password" required>
 
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="Masukkan username"
-                        autocomplete="username"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Masukkan password"
-                        autocomplete="current-password"
-                        required
-                    >
-                </div>
-
-                <button type="submit" class="btn-login">
-                    Login
-                </button>
-
+                <button type="submit">Login</button>
             </form>
+        </section>
+    </main>
 
-            <div class="login-demo">
-                <strong>Akun pengujian:</strong>
-                <p>Username: admin</p>
-                <p>Password: password123</p>
-            </div>
-
-        </div>
-
-        <p class="login-footer">
-            &copy; 2026 SIM-Barang
-        </p>
-
-    </div>
+    <footer>
+        <p>&copy; 2026 SIM-Barang - Sistem Pengelolaan Inventaris Barang Jurusan</p>
+    </footer>
 
 </body>
 </html>

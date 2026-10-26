@@ -1,634 +1,218 @@
-
-/* =====================================
-   1. RESET DAN DASAR
-===================================== */
-
+/* Pengaturan dasar halaman */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f6fb;
-    color: #263449;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+    color: #333333;
 }
 
-/* =====================================
-   2. HEADER
-===================================== */
-
+/* Bagian header */
 header {
-    background-color: #142d4e;
+    background-color: #1e3a8a;
     color: white;
-    padding: 30px 7%;
+    text-align: center;
+    padding: 25px;
 }
 
-.header-content h1 {
-    font-size: 28px;
-    margin-bottom: 5px;
+header h1 {
+    margin: 0;
+    font-size: 32px;
 }
 
-.header-content p {
-    color: #cbd7e6;
-    font-size: 14px;
+header p {
+    margin-bottom: 0;
+    font-size: 16px;
 }
 
-/* =====================================
-   3. NAVIGASI
-===================================== */
-
+/* Bagian navigasi */
 nav {
-    background-color: #1e416b;
-    padding: 15px 7%;
+    background-color: #172554;
     display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
     font-weight: bold;
-    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #8fc5ff;
+    color: #93c5fd;
 }
 
-/* =====================================
-   4. KONTEN UTAMA
-===================================== */
-
-main {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 25px;
-}
-
-section {
-    background-color: white;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-}
-
-section h2 {
-    color: #142d4e;
-    font-size: 21px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e7edf5;
-}
-
-/* =====================================
-   5. PENCARIAN BARANG
-===================================== */
-
-.search-box {
-    margin-bottom: 15px;
-}
-
-#cariBarang {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 15px;
-    border: 1px solid #ccd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-#cariBarang:focus {
-    outline: none;
-    border-color: #2864a0;
-    box-shadow: 0 0 0 3px rgba(40, 100, 160, 0.12);
-}
-
-/* =====================================
-   6. TABEL INVENTARIS
-===================================== */
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-}
-
+/* Bagian tabel inventaris */
 table {
     width: 100%;
     border-collapse: collapse;
-}
-
-th {
-    background-color: #1e416b;
-    color: white;
-    padding: 13px;
-    text-align: left;
-    white-space: nowrap;
-}
-
-td {
-    padding: 13px;
-    border-bottom: 1px solid #e5eaf0;
-}
-
-tbody tr:hover {
-    background-color: #f0f5fc;
-}
-
-/* =====================================
-   7. STATUS BARANG
-===================================== */
-
-.status {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.status.baik {
-    background-color: #dcfce7;
-    color: #166534;
-}
-
-/* =====================================
-   8. PESAN PENCARIAN KOSONG
-===================================== */
-
-#pesanKosong {
-    display: none;
-    padding: 20px;
-    text-align: center;
-    color: #718096;
-}
-
-/* =====================================
-   9. FORMULIR INPUT
-===================================== */
-
-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.form-group label {
-    font-weight: bold;
-    color: #263449;
-    font-size: 14px;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccd5e1;
-    border-radius: 6px;
-    font-size: 14px;
+    margin-top: 20px;
     background-color: white;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #2864a0;
-    box-shadow: 0 0 0 3px rgba(40, 100, 160, 0.12);
-}
-
-/* =====================================
-   10. TOMBOL FORMULIR
-===================================== */
-
-.form-button {
-    grid-column: 1 / -1;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-button {
-    padding: 12px 22px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-simpan {
-    background-color: #1e416b;
+thead {
+    background-color: #1e3a8a;
     color: white;
 }
 
-.btn-simpan:hover {
-    background-color: #142d4e;
+th,
+td {
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: left;
 }
 
-.btn-reset {
-    background-color: #e4eaf2;
-    color: #263449;
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.btn-reset:hover {
-    background-color: #cbd5e1;
-}
-
-/* =====================================
-   11. NOTIFIKASI JAVASCRIPT
-===================================== */
-
-#notifikasi {
-    display: none;
-    padding: 13px 15px;
-    margin-bottom: 18px;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-#notifikasi.sukses {
-    display: block;
-    background-color: #e1f3e8;
-    color: #176b3a;
-    border: 1px solid #a5d6b5;
-}
-
-#notifikasi.error {
-    display: block;
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-}
-
-/* =====================================
-   12. NOTIFIKASI PHP
-===================================== */
-
-.pesan-sukses {
-    padding: 13px;
-    margin-bottom: 15px;
-    background-color: #dcfce7;
-    color: #166534;
-    border: 1px solid #a5d6b5;
-    border-radius: 6px;
-}
-
-.pesan-error {
-    padding: 13px;
-    margin-bottom: 15px;
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-    border-radius: 6px;
-}
-
-/* =====================================
-   13. TOTAL ESTIMASI ASET
-===================================== */
-
-.total-aset {
-    margin-top: 20px;
+/* Bagian form tambah barang */
+form {
+    background-color: white;
     padding: 20px;
-    background-color: #edf4fc;
-    border-left: 5px solid #1e416b;
-    border-radius: 6px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.total-aset p {
-    color: #52647b;
+form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
     font-size: 14px;
 }
 
-.total-aset h3 {
-    color: #142d4e;
-    font-size: 25px;
-    margin-top: 5px;
+form button {
+    margin-top: 18px;
+    padding: 12px 20px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.belum-ada-data {
-    color: #718096;
-    font-size: 14px;
+form button:hover {
+    background-color: #172554;
 }
 
-/* =====================================
-   14. FOOTER
-===================================== */
+/* Area konten utama */
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
 
+/* Judul bagian */
+section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+/* Bagian footer */
 footer {
-    background-color: #142d4e;
+    background-color: #172554;
     color: white;
     text-align: center;
-    padding: 20px;
-    font-size: 14px;
+    padding: 18px;
+    margin-top: 30px;
 }
 
-/* =====================================
-   15. TABLET
-   600px - 1024px
-===================================== */
+footer p {
+    margin: 0;
+}
 
-@media screen and (min-width: 600px) and (max-width: 1024px) {
+/* Responsive untuk perangkat mobile */
+@media (max-width: 599px) {
 
-    header {
-        padding: 30px 5%;
+    header h1 {
+        font-size: 26px;
     }
 
     nav {
-        padding: 15px 5%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
+
+    main {
+        padding: 0 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
+
+/* Responsive untuk perangkat tablet */
+@media (min-width: 600px) and (max-width: 1024px) {
 
     main {
         padding: 0 25px;
     }
 
-    form {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* =====================================
-   16. DESKTOP
-   DI ATAS 1024px
-===================================== */
-
-@media screen and (min-width: 1025px) {
-
-    header {
-        padding: 35px 10%;
+    table {
+        font-size: 15px;
     }
 
-    nav {
-        padding-left: 10%;
-        padding-right: 10%;
-    }
-
-    main {
-        max-width: 1200px;
-    }
-
-    section {
-        padding: 30px;
-    }
-}
-
-/* =====================================
-   17. MOBILE
-   DI BAWAH 600px
-===================================== */
-
-@media screen and (max-width: 599px) {
-
-    header {
-        padding: 25px 20px;
-    }
-
-    .header-content h1 {
-        font-size: 23px;
-    }
-
-    nav {
-        padding: 15px 20px;
-        gap: 15px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    main {
-        padding: 0 15px;
-        margin: 20px auto;
-    }
-
-    section {
-        padding: 18px;
-    }
-
-    section h2 {
-        font-size: 18px;
+    th,
+    td {
+        padding: 10px;
     }
 
     form {
-        grid-template-columns: 1fr;
-    }
-
-    .form-button {
-        flex-direction: column;
-    }
-
-    .form-button button {
-        width: 100%;
-    }
-
-    #cariBarang {
-        max-width: 100%;
-    }
-
-    .total-aset h3 {
-        font-size: 21px;
+        padding: 20px;
     }
 }
 
-/* =====================================
-   PERTEMUAN 6 - LOGIN
-===================================== */
+/* ================= TAMBAHAN GAYA SIMPAN & LOGIN ================= */
 
-.login-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #142d4e, #2864a0);
-}
-
-.login-container {
-    width: 100%;
-    max-width: 430px;
-}
-
-.login-header {
-    text-align: center;
-    color: white;
-    margin-bottom: 25px;
-}
-
-.login-icon {
-    font-size: 45px;
-    margin-bottom: 10px;
-}
-
-.login-header h1 {
-    font-size: 30px;
-}
-
-.login-header p {
-    color: #d7e5f5;
-    font-size: 14px;
-}
-
-.login-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.login-card h2 {
-    color: #142d4e;
-    margin-bottom: 5px;
-}
-
-.login-subtitle {
-    color: #718096;
-    margin-bottom: 25px;
-    font-size: 14px;
-}
-
-.login-card form {
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-login {
-    width: 100%;
-    background-color: #1e416b;
-    color: white;
-    margin-top: 10px;
-}
-
-.btn-login:hover {
-    background-color: #142d4e;
-}
-
-.login-demo {
-    background-color: #edf4fc;
-    border-radius: 7px;
-    padding: 12px;
-    margin-top: 20px;
-    font-size: 13px;
-    color: #263449;
-}
-
-.login-demo p {
-    margin-top: 4px;
-}
-
-.login-footer {
-    text-align: center;
-    color: #d7e5f5;
-    margin-top: 20px;
-    font-size: 13px;
-}
-
-/* =====================================
-   PERTEMUAN 6 - USER HEADER
-===================================== */
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.user-detail {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-}
-
-.user-detail strong {
-    color: white;
-    font-size: 14px;
-}
-
-.user-detail span {
-    color: #cbd7e6;
-    font-size: 12px;
-}
-
-.btn-logout {
+/* Tombol kembali ke form */
+.btn-kembali {
     display: inline-block;
-    text-decoration: none;
-    background-color: #dc5353;
-    color: white;
-    padding: 9px 17px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-logout:hover {
-    background-color: #b92f2f;
-}
-
-/* =====================================
-   PERTEMUAN 6 - OOP BARANG
-===================================== */
-
-.info-barang {
     margin-top: 20px;
-    background-color: #edf4fc;
-    padding: 20px;
-    border-left: 5px solid #1e416b;
-    border-radius: 7px;
+    padding: 10px 18px;
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-.info-barang h3 {
-    color: #142d4e;
-    margin-bottom: 10px;
+.btn-kembali:hover {
+    background-color: #172554;
 }
 
-.info-barang p {
-    margin-bottom: 5px;
-}
-
-/* =====================================
-   RESPONSIVE LOGIN DAN HEADER
-===================================== */
-
-@media screen and (max-width: 599px) {
-
-    .login-card {
-        padding: 22px;
-    }
-
-    .header-content {
-        align-items: flex-start;
-    }
-
-    .user-info {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .user-detail {
-        text-align: left;
-    }
-
+/* Notifikasi error */
+.pesan-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 10px 15px;
+    border: 1px solid #f87171;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
